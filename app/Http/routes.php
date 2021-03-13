@@ -11,6 +11,8 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +20,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/user/{id}/contacts', function ($id) {
+    $user = User::find($id);
+    return $user->contacts()->get();
+});
