@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+
+    </style>
+
+@endsection
+
 @section('content')
     <br>
     {{$contact->name}}
@@ -10,6 +17,7 @@
             {{$email->address}}
         </li>
     @endforeach
+
     <h1>Phones:</h1>
     @foreach($contact->phones as $phone)
         {{$phone->number}}

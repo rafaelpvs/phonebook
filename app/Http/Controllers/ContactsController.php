@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\Email;
+use App\Phone;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -31,7 +32,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacts.create');
     }
 
     /**
@@ -42,7 +43,12 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $contact = Contact::create($input);
+        $phone = new Phone();
+        $phone->name = $input['name'];
+        $contact->phones()->save($phone);
+//        return redirect('contacts.index');
     }
 
     /**

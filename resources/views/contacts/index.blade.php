@@ -1,5 +1,10 @@
 @extends('layouts.app')
+@section('style')
+    <style>
 
+    </style>
+
+@endsection
 @section('content')
     <ul>
         @foreach($contacts as $contact)
