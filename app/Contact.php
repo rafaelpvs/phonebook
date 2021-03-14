@@ -10,7 +10,11 @@ class Contact extends Model
         'name'
     ];
 
-    public function contacts() {
-        $this->belongsToMany('App\User');
+
+    public function emails() {
+        return $this->hasMany('App\Email');
+    }
+    public function phones() {
+        return $this->hasMany('App\Phone');
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
 
-    public function contact(){
-        return $this->belongsTo('App\User');
-    }
+//    public function contact(){
+//        return $this->belongsTo('App\Contact');
+//    }
 }

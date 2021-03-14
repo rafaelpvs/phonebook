@@ -11,6 +11,7 @@
 |
 */
 
+use App\Contact;
 use App\User;
 
 Route::get('/', function () {
@@ -24,4 +25,15 @@ Route::get('/home', 'HomeController@index');
 Route::get('/user/{id}/contacts', function ($id) {
     $user = User::find($id);
     return $user->contacts()->get();
+});
+Route::get('/test/{id}', function ($id) {
+    $contact = Contact::findOrFail($id);
+    return view('contacts.show', compact('contact'));
+});
+
+Route::resource('contacts', 'ContactsController');
+
+Route::get('/contacts/{id}/emails', function ($id) {
+    $contact = Contact::find($id);
+    return dd($contact->emails());
 });
