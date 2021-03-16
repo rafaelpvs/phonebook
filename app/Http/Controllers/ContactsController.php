@@ -21,7 +21,6 @@ class ContactsController extends Controller
     {
         $contacts =  Auth::user()->contacts;
 
-
         return view('contacts.index', compact('contacts'));
     }
 
@@ -43,12 +42,17 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $input = $request->all();
         $contact = Contact::create($input);
+        $user->contacts()->save($contact);
         $phone = new Phone();
-        $phone->name = $input['name'];
+        $phone->number = $input['number'];
+        $email = new Email();
+        $email->address = $input['address'];
         $contact->phones()->save($phone);
-//        return redirect('contacts.index');
+        $contact->emails()->save($email);
+        return redirect('/contacts');
     }
 
     /**

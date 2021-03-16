@@ -8,18 +8,18 @@
 @endsection
 
 @section('content')
-    <br>
-    {{$contact->name}}
-    <br>
-    <h1>Emails:</h1>
+    <h1 id="name">{{$contact->name}}</h1>
+    <h2 id="email-title">Emails:</h2>
     @foreach($contact->emails as $email)
         <li>
             {{$email->address}}
         </li>
     @endforeach
 
-    <h1>Phones:</h1>
+    <h2 id="phone-title">Phones:</h2>
     @foreach($contact->phones as $phone)
-        {{$phone->number}}
+        <li>
+            {{$phone->number}}
+        </li>
     @endforeach
 @endsection

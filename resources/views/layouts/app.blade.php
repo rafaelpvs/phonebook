@@ -18,6 +18,7 @@
     <style>
         body {
             font-family: 'Lato';
+            height: 100vh;
         }
 
         .fa-btn {
