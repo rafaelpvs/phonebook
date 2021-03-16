@@ -19,9 +19,15 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        $contacts =  Auth::user()->contacts;
+        $user = Auth::user();
+        if($user){
+            $contacts =  Auth::user()->contacts;
 
-        return view('contacts.index', compact('contacts'));
+            return view('contacts.index', compact('contacts'));
+        }else{
+            echo "Please log in to see your contacts";
+        }
+
     }
 
     /**
